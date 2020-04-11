@@ -1,0 +1,23 @@
+<%- include("partials/header"); -%>
+<div class="Post"></div>
+<h1 class="title">Home</h1>
+<p class="content"> <%= startingContent %> </p>
+
+<!-- Se imprime la lista de Posts recibida del servidor-->
+<%  posts.forEach(function(post){ %>
+<div class="Post">
+  <h1 class="title"><%=post.title%></h1>
+  <p class="content">
+    <!-- se recorta el String en solo 100 caracteres-->
+    <%=post.content.substring(0, 100)%>
+    <!-- si el largo es mayor a 100, se le adiciona un link para ir al post con todo el contenido-->
+    <%  if(post.content.length>100){  %>
+    <a href="/posts/<%=post._id%>"> Leer mas...</a>
+    <% } %>
+  </p>
+</div>
+
+<% }) %>
+
+</div>
+<%- include("partials/footer"); -%>
